@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -22,7 +23,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="NrP-NC-zgm" kind="show" identifier="pair" id="2NM-Sj-YfI"/>
+                                    <segue destination="SfY-sr-xD4" kind="showDetail" id="vIl-hb-3QS"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -36,7 +37,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
-        <!--Pairing View Controller-->
+        <!--Pair your car-->
         <scene sceneID="8fH-z0-t9l">
             <objects>
                 <viewController id="NrP-NC-zgm" customClass="PairingViewController" customModule="RemoteControlCar" customModuleProvider="target" sceneMemberID="viewController">
@@ -48,8 +49,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is the place where you pair with your car. Logics to be added. " lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="phv-SZ-gWX">
-                                <rect key="frame" x="44" y="28" width="512" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Logics to be added. " textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="phv-SZ-gWX">
+                                <rect key="frame" x="48" y="72" width="504" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -60,7 +61,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="rXn-4o-L6O" kind="showDetail" identifier="buttonControl" id="z4m-ZA-cIT"/>
+                                    <segue destination="rXn-4o-L6O" kind="show" id="MIl-jK-nbG"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c7u-AJ-VI5">
@@ -69,7 +70,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="ysr-Og-FPW" kind="showDetail" id="bvs-OW-hkz"/>
+                                    <segue destination="ysr-Og-FPW" kind="show" id="bvs-OW-hkz"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -78,17 +79,20 @@
                             <constraint firstItem="Ryn-eK-IJe" firstAttribute="top" secondItem="c7u-AJ-VI5" secondAttribute="bottom" constant="20" id="6bA-ZE-PEn"/>
                             <constraint firstAttribute="centerX" secondItem="c7u-AJ-VI5" secondAttribute="centerX" constant="-0.5" id="893-Im-yjM"/>
                             <constraint firstItem="phv-SZ-gWX" firstAttribute="top" secondItem="cGW-zr-6ei" secondAttribute="bottom" constant="8" symbolic="YES" id="ANj-YK-PvY"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="phv-SZ-gWX" secondAttribute="trailing" constant="32" id="Smc-n7-VzB"/>
                             <constraint firstItem="c7u-AJ-VI5" firstAttribute="top" secondItem="GP3-eo-TBK" secondAttribute="bottom" constant="8" id="Xd5-9r-CVU"/>
                             <constraint firstAttribute="centerX" secondItem="GP3-eo-TBK" secondAttribute="centerX" constant="-0.5" id="Yrp-EB-LO2"/>
                             <constraint firstItem="phv-SZ-gWX" firstAttribute="centerX" secondItem="FXQ-gV-qwE" secondAttribute="centerX" id="vYg-kk-AMc"/>
+                            <constraint firstItem="phv-SZ-gWX" firstAttribute="leading" secondItem="FXQ-gV-qwE" secondAttribute="leadingMargin" constant="32" id="z77-BS-J2I"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Pair your car" id="ieG-hl-HJn"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IC8-h3-Kyq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1038" y="399"/>
+            <point key="canvasLocation" x="1805" y="344"/>
         </scene>
-        <!--Gyro Control View Controller-->
+        <!--Gyroscope Control-->
         <scene sceneID="8K6-2c-pOo">
             <objects>
                 <viewController id="ysr-Og-FPW" customClass="GyroControlViewController" customModule="RemoteControlCar" customModuleProvider="target" sceneMemberID="viewController">
@@ -100,8 +104,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This side up" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nbr-7w-uVc">
-                                <rect key="frame" x="254" y="20" width="93" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This side up" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bHF-SB-8Fj">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -109,16 +113,35 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Nbr-7w-uVc" firstAttribute="centerX" secondItem="kQf-y2-TOj" secondAttribute="centerX" id="Amc-V3-Ng8"/>
-                            <constraint firstItem="Nbr-7w-uVc" firstAttribute="top" secondItem="d4q-XX-5o7" secondAttribute="bottom" id="sdI-Rw-YP2"/>
+                            <constraint firstAttribute="centerY" secondItem="bHF-SB-8Fj" secondAttribute="centerY" constant="0.5" id="4YK-BW-3Iw"/>
+                            <constraint firstAttribute="centerX" secondItem="bHF-SB-8Fj" secondAttribute="centerX" constant="-0.5" id="NoP-DG-3le"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="bHF-SB-8Fj"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="4YK-BW-3Iw"/>
+                                <exclude reference="NoP-DG-3le"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact">
+                            <mask key="subviews">
+                                <include reference="bHF-SB-8Fj"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="4YK-BW-3Iw"/>
+                                <include reference="NoP-DG-3le"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <navigationItem key="navigationItem" title="Gyroscope Control" id="535-kW-7QV"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZWl-o7-hgG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1736" y="399"/>
+            <point key="canvasLocation" x="2548" y="399"/>
         </scene>
-        <!--Button Control View Controller-->
+        <!--Button Control-->
         <scene sceneID="wIP-Y3-Fvy">
             <objects>
                 <viewController id="rXn-4o-L6O" customClass="ButtonControlViewController" customModule="RemoteControlCar" customModuleProvider="target" sceneMemberID="viewController">
@@ -130,26 +153,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WGl-0Z-j2V">
-                                <rect key="frame" x="280" y="256" width="40" height="89"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="64"/>
-                                <state key="normal" title="●">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="stop:" destination="rXn-4o-L6O" eventType="touchUpInside" id="RDa-Oi-VsS"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jlE-qP-VhJ">
-                                <rect key="frame" x="352" y="256" width="64" height="89"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="64"/>
-                                <state key="normal" title="➡︎">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="turnRight:" destination="rXn-4o-L6O" eventType="touchUpInside" id="lua-0z-Wfg"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T3A-aZ-GgL">
                                 <rect key="frame" x="184" y="256" width="64" height="89"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="64"/>
@@ -157,7 +160,9 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="turnLeft:" destination="rXn-4o-L6O" eventType="touchUpInside" id="Aaj-9c-Iqq"/>
+                                    <action selector="stop:" destination="rXn-4o-L6O" eventType="touchUpOutside" id="Aln-Eh-SUJ"/>
+                                    <action selector="stop:" destination="rXn-4o-L6O" eventType="touchUpInside" id="YhG-o3-C6G"/>
+                                    <action selector="turnLeft:" destination="rXn-4o-L6O" eventType="touchDown" id="Bsa-Uf-Owk"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qC6-lo-8a1">
@@ -167,7 +172,9 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="backward:" destination="rXn-4o-L6O" eventType="touchUpInside" id="8ax-09-1RW"/>
+                                    <action selector="backward:" destination="rXn-4o-L6O" eventType="touchDown" id="J3S-cw-XKO"/>
+                                    <action selector="stop:" destination="rXn-4o-L6O" eventType="touchUpInside" id="96I-4w-rNz"/>
+                                    <action selector="stop:" destination="rXn-4o-L6O" eventType="touchUpOutside" id="OFu-HR-Yyd"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fUA-e5-QJ3">
@@ -177,28 +184,71 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="forward:" destination="rXn-4o-L6O" eventType="touchUpInside" id="Cc1-PX-CYL"/>
+                                    <action selector="forward:" destination="rXn-4o-L6O" eventType="touchDown" id="nUx-fJ-98q"/>
+                                    <action selector="stop:" destination="rXn-4o-L6O" eventType="touchUpInside" id="9Li-i0-Tyt"/>
+                                    <action selector="stop:" destination="rXn-4o-L6O" eventType="touchUpOutside" id="jgU-VF-hEg"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jlE-qP-VhJ">
+                                <rect key="frame" x="352" y="256" width="64" height="89"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="64"/>
+                                <state key="normal" title="➡︎">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="stop:" destination="rXn-4o-L6O" eventType="touchUpInside" id="C9m-J0-AXa"/>
+                                    <action selector="stop:" destination="rXn-4o-L6O" eventType="touchUpOutside" id="M2a-CJ-4VZ"/>
+                                    <action selector="turnRight:" destination="rXn-4o-L6O" eventType="touchDown" id="P75-vB-1vu"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HzT-0d-B7U">
+                                <rect key="frame" x="273" y="255" width="54" height="89"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="64"/>
+                                <state key="normal" title="❂">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="specialAction:" destination="rXn-4o-L6O" eventType="touchDown" id="8zR-88-ApG"/>
+                                    <action selector="stop:" destination="rXn-4o-L6O" eventType="touchUpOutside" id="tbq-XZ-o5Z"/>
+                                    <action selector="stop:" destination="rXn-4o-L6O" eventType="touchUpInside" id="yHV-iM-e5k"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerY" secondItem="WGl-0Z-j2V" secondAttribute="centerY" id="4VC-gm-TSm"/>
-                            <constraint firstAttribute="centerX" secondItem="WGl-0Z-j2V" secondAttribute="centerX" id="6YY-Ps-yeH"/>
-                            <constraint firstItem="qC6-lo-8a1" firstAttribute="top" secondItem="WGl-0Z-j2V" secondAttribute="bottom" constant="8" id="G0w-cw-25f"/>
-                            <constraint firstItem="jlE-qP-VhJ" firstAttribute="leading" secondItem="WGl-0Z-j2V" secondAttribute="trailing" constant="32" id="Iol-Mr-wgh"/>
-                            <constraint firstItem="WGl-0Z-j2V" firstAttribute="top" secondItem="fUA-e5-QJ3" secondAttribute="bottom" constant="8" id="IzZ-oM-fUZ"/>
-                            <constraint firstItem="WGl-0Z-j2V" firstAttribute="centerY" secondItem="T3A-aZ-GgL" secondAttribute="centerY" id="Re3-H9-s9G"/>
-                            <constraint firstItem="WGl-0Z-j2V" firstAttribute="leading" secondItem="T3A-aZ-GgL" secondAttribute="trailing" constant="32" id="TZR-Bx-WUq"/>
-                            <constraint firstItem="qC6-lo-8a1" firstAttribute="centerX" secondItem="WGl-0Z-j2V" secondAttribute="centerX" id="c8B-AA-7yS"/>
-                            <constraint firstItem="fUA-e5-QJ3" firstAttribute="centerX" secondItem="WGl-0Z-j2V" secondAttribute="centerX" id="qfd-nJ-dcd"/>
-                            <constraint firstItem="jlE-qP-VhJ" firstAttribute="centerY" secondItem="WGl-0Z-j2V" secondAttribute="centerY" id="xsE-mg-4JS"/>
+                            <constraint firstAttribute="centerY" secondItem="jlE-qP-VhJ" secondAttribute="centerY" constant="-0.5" id="Aci-PY-onX"/>
+                            <constraint firstItem="jlE-qP-VhJ" firstAttribute="leading" secondItem="HzT-0d-B7U" secondAttribute="trailing" constant="25" id="Sk3-vr-p0g"/>
+                            <constraint firstAttribute="centerX" secondItem="fUA-e5-QJ3" secondAttribute="centerX" id="TE0-qv-dez"/>
+                            <constraint firstItem="qC6-lo-8a1" firstAttribute="top" secondItem="HzT-0d-B7U" secondAttribute="bottom" constant="9" id="bqM-Xe-WCA"/>
+                            <constraint firstAttribute="centerX" secondItem="HzT-0d-B7U" secondAttribute="centerX" id="bwz-OT-Deq"/>
+                            <constraint firstItem="HzT-0d-B7U" firstAttribute="leading" secondItem="T3A-aZ-GgL" secondAttribute="trailing" constant="25" id="dxd-BG-Hzc"/>
+                            <constraint firstAttribute="centerX" secondItem="qC6-lo-8a1" secondAttribute="centerX" id="kHA-vi-aaw"/>
+                            <constraint firstAttribute="centerY" secondItem="T3A-aZ-GgL" secondAttribute="centerY" constant="-0.5" id="tG3-ku-qW9"/>
+                            <constraint firstAttribute="centerY" secondItem="HzT-0d-B7U" secondAttribute="centerY" constant="0.5" id="unE-nm-rEc"/>
+                            <constraint firstItem="HzT-0d-B7U" firstAttribute="top" secondItem="fUA-e5-QJ3" secondAttribute="bottom" constant="7" id="yZT-UE-ao1"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Button Control" id="7GD-Dy-7Qw"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JDy-Jn-Q6H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1038" y="1101"/>
+            <point key="canvasLocation" x="1850" y="1119"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="jjo-l4-DgR">
+            <objects>
+                <navigationController id="SfY-sr-xD4" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="e7H-Tx-Cl4">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="NrP-NC-zgm" kind="relationship" relationship="rootViewController" id="Spy-Wd-jhv"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e01-8D-kmM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1140" y="351"/>
         </scene>
     </scenes>
 </document>

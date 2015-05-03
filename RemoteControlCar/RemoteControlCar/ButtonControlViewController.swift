@@ -10,7 +10,6 @@ import UIKit
 
 class ButtonControlViewController: UIViewController {
 
-
     @IBAction func forward(sender: UIButton) {
         println("Going forward")
     }
@@ -31,5 +30,8 @@ class ButtonControlViewController: UIViewController {
         println("Stopped")
     }
     
+    @IBAction func specialAction(sender: UIButton) {
+        println("Performing special action")
+    }
 
 }
