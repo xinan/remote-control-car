@@ -139,12 +139,12 @@
                                 <exclude reference="VoQ-gH-SUw"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="4YK-BW-3Iw"/>
-                                <exclude reference="NoP-DG-3le"/>
                                 <exclude reference="Won-Ny-G4d"/>
                                 <exclude reference="JPH-mr-rvh"/>
                                 <exclude reference="blk-C1-6Pf"/>
                                 <exclude reference="tyF-d7-J4K"/>
+                                <exclude reference="4YK-BW-3Iw"/>
+                                <exclude reference="NoP-DG-3le"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=compact">
