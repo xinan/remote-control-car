@@ -104,9 +104,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please rotate left." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zmn-pn-KFH">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This side up" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bHF-SB-8Fj">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="↺" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VoQ-gH-SUw">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="64"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -114,15 +126,25 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerY" secondItem="bHF-SB-8Fj" secondAttribute="centerY" constant="0.5" id="4YK-BW-3Iw"/>
+                            <constraint firstAttribute="centerX" secondItem="Zmn-pn-KFH" secondAttribute="centerX" id="JPH-mr-rvh"/>
                             <constraint firstAttribute="centerX" secondItem="bHF-SB-8Fj" secondAttribute="centerX" constant="-0.5" id="NoP-DG-3le"/>
+                            <constraint firstAttribute="centerX" secondItem="VoQ-gH-SUw" secondAttribute="centerX" id="Won-Ny-G4d"/>
+                            <constraint firstItem="Zmn-pn-KFH" firstAttribute="top" secondItem="VoQ-gH-SUw" secondAttribute="bottom" constant="8" id="blk-C1-6Pf"/>
+                            <constraint firstAttribute="centerY" secondItem="Zmn-pn-KFH" secondAttribute="centerY" constant="0.5" id="tyF-d7-J4K"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
+                                <exclude reference="Zmn-pn-KFH"/>
                                 <exclude reference="bHF-SB-8Fj"/>
+                                <exclude reference="VoQ-gH-SUw"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="4YK-BW-3Iw"/>
                                 <exclude reference="NoP-DG-3le"/>
+                                <exclude reference="Won-Ny-G4d"/>
+                                <exclude reference="JPH-mr-rvh"/>
+                                <exclude reference="blk-C1-6Pf"/>
+                                <exclude reference="tyF-d7-J4K"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=compact">
@@ -134,12 +156,24 @@
                                 <include reference="NoP-DG-3le"/>
                             </mask>
                         </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="Zmn-pn-KFH"/>
+                                <include reference="VoQ-gH-SUw"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="Won-Ny-G4d"/>
+                                <include reference="JPH-mr-rvh"/>
+                                <include reference="blk-C1-6Pf"/>
+                                <include reference="tyF-d7-J4K"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Gyroscope Control" id="535-kW-7QV"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZWl-o7-hgG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2548" y="399"/>
+            <point key="canvasLocation" x="2547" y="399"/>
         </scene>
         <!--Button Control-->
         <scene sceneID="wIP-Y3-Fvy">

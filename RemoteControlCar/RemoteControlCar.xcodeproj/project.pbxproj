@@ -423,6 +423,7 @@
 				F269D1971AF4B8430075CDFC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F269D1981AF4B8430075CDFC /* Build configuration list for PBXNativeTarget "RemoteControlCarTests" */ = {
 			isa = XCConfigurationList;
@@ -431,6 +432,7 @@
 				F269D19A1AF4B8430075CDFC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
