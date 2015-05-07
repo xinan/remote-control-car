@@ -12,11 +12,13 @@ import CoreBluetooth
 class PairingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CBCentralManagerDelegate, CBPeripheralDelegate {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var statusLabel: UILabel!
     
     var manager: CBCentralManager!
     var peripheral: CBPeripheral!
     var characteristic: CBCharacteristic!
     var devices: NSMutableArray = NSMutableArray()
+    var connectedIndexPath: NSIndexPath!
     let SUUID = [CBUUID(string: "FFE0")]
     let CUUID = [CBUUID(string: "FFE1")]
     
@@ -58,12 +60,17 @@ class PairingViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.peripheral = peripheral
         self.peripheral.delegate = self
         println("Peripheral \(peripheral.name) connected.")
+        self.tableView.cellForRowAtIndexPath(self.connectedIndexPath)?.accessoryType = .Checkmark
+        self.statusLabel.text = "Connected."
         self.peripheral.discoverServices(SUUID)
     }
     
     func centralManager(central: CBCentralManager!, didDisconnectPeripheral peripheral: CBPeripheral!, error: NSError!) {
         self.peripheral = nil
         println("Peripheral \(peripheral.name) disconnected.")
+        self.tableView.cellForRowAtIndexPath(self.connectedIndexPath)?.accessoryType = .None
+        self.statusLabel.text = "Disconnected. Searching again..."
+        self.manager.scanForPeripheralsWithServices(SUUID, options: [CBCentralManagerScanOptionAllowDuplicatesKey: false])
     }
     
     func centralManager(central: CBCentralManager!, didFailToConnectPeripheral peripheral: CBPeripheral!, error: NSError!) {
@@ -80,9 +87,9 @@ class PairingViewController: UIViewController, UITableViewDelegate, UITableViewD
             return
         }
         for service in peripheral.services {
-            println("Service found: \(service.UUIDString)")
-            if service.UUIDString == SUUID[0] {
-                println("Searching characteristic for service \(service.UUIDString)...")
+            println("Service found: \(service.UUID)")
+            if service.UUID.description == SUUID[0] {
+                println("Searching characteristic for service \(service.UUID)...")
                 peripheral.discoverCharacteristics(CUUID, forService: service as! CBService)
             }
         }
@@ -94,8 +101,8 @@ class PairingViewController: UIViewController, UITableViewDelegate, UITableViewD
             return
         }
         for characteristic in service.characteristics {
-            println("Characteristic found: \(characteristic.UUIDString)")
-            if characteristic.UUIDString == CUUID[0] {
+            println("Characteristic found: \(characteristic.UUID)")
+            if characteristic.UUID.description == CUUID[0] {
                 self.characteristic = characteristic as! CBCharacteristic
                 println("Everything seems to be ok now. Try to control the car. ")
             }
@@ -129,13 +136,14 @@ class PairingViewController: UIViewController, UITableViewDelegate, UITableViewD
         let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.CellReuseIdentifier, forIndexPath: indexPath) as! UITableViewCell
         var device: CBPeripheral = devices.objectAtIndex(indexPath.row) as! CBPeripheral
         cell.textLabel?.text = device.name
-        cell.detailTextLabel?.text = device.identifier.UUIDString
-        
+        cell.detailTextLabel?.text = device.description
+        cell.selectionStyle = .None
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let device = devices.objectAtIndex(indexPath.row) as! CBPeripheral
+        self.connectedIndexPath = indexPath
         self.manager.connectPeripheral(device, options: nil)
         println("Connecting to peripheral \(device.name)")
     }
