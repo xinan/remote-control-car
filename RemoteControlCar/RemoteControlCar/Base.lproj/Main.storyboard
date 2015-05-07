@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lis-vU-b92">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lis-vU-b92">
                                 <rect key="frame" x="260" y="285" width="80" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                 <state key="normal" title="Get Started">
@@ -58,20 +58,12 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GP3-eo-TBK">
                                 <rect key="frame" x="250" y="512" width="101" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <state key="normal" title="Button Control">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <segue destination="rXn-4o-L6O" kind="show" id="MIl-jK-nbG"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c7u-AJ-VI5">
-                                <rect key="frame" x="263" y="550" width="75" height="30"/>
-                                <state key="normal" title="Gyroscope">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="ysr-Og-FPW" kind="show" id="bvs-OW-hkz"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="DHH-ie-Mcb">
@@ -110,19 +102,47 @@
                                     <outlet property="delegate" destination="NrP-NC-zgm" id="wvd-pY-Mma"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c7u-AJ-VI5">
+                                <rect key="frame" x="263" y="550" width="75" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="Gyroscope">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="ysr-Og-FPW" kind="show" id="bvs-OW-hkz"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Ryn-eK-IJe" firstAttribute="top" secondItem="c7u-AJ-VI5" secondAttribute="bottom" constant="20" id="6bA-ZE-PEn"/>
                             <constraint firstAttribute="centerX" secondItem="c7u-AJ-VI5" secondAttribute="centerX" constant="-0.5" id="893-Im-yjM"/>
-                            <constraint firstItem="phv-SZ-gWX" firstAttribute="top" secondItem="cGW-zr-6ei" secondAttribute="bottom" constant="8" symbolic="YES" id="ANj-YK-PvY"/>
-                            <constraint firstItem="DHH-ie-Mcb" firstAttribute="leading" secondItem="FXQ-gV-qwE" secondAttribute="leadingMargin" constant="134" id="EeY-La-xdC"/>
+                            <constraint firstItem="phv-SZ-gWX" firstAttribute="top" secondItem="cGW-zr-6ei" secondAttribute="bottom" constant="8" symbolic="YES" id="ANj-YK-PvY">
+                                <variation key="heightClass=compact" constant="16"/>
+                            </constraint>
+                            <constraint firstItem="GP3-eo-TBK" firstAttribute="leading" secondItem="FXQ-gV-qwE" secondAttribute="leadingMargin" constant="114" id="DIs-BH-I7T">
+                                <variation key="heightClass=compact" constant="64"/>
+                            </constraint>
+                            <constraint firstItem="DHH-ie-Mcb" firstAttribute="leading" secondItem="FXQ-gV-qwE" secondAttribute="leadingMargin" constant="134" id="EeY-La-xdC">
+                                <variation key="heightClass=compact" constant="96"/>
+                            </constraint>
                             <constraint firstAttribute="trailingMargin" secondItem="phv-SZ-gWX" secondAttribute="trailing" constant="32" id="Smc-n7-VzB"/>
-                            <constraint firstItem="GP3-eo-TBK" firstAttribute="top" secondItem="DHH-ie-Mcb" secondAttribute="bottom" constant="12" id="W2h-Hn-gOs"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="c7u-AJ-VI5" secondAttribute="trailing" constant="118" id="W9O-Du-zOX">
+                                <variation key="heightClass=compact" constant="64"/>
+                            </constraint>
                             <constraint firstItem="c7u-AJ-VI5" firstAttribute="top" secondItem="GP3-eo-TBK" secondAttribute="bottom" constant="8" id="Xd5-9r-CVU"/>
                             <constraint firstAttribute="centerX" secondItem="GP3-eo-TBK" secondAttribute="centerX" constant="-0.5" id="Yrp-EB-LO2"/>
-                            <constraint firstItem="DHH-ie-Mcb" firstAttribute="top" secondItem="phv-SZ-gWX" secondAttribute="bottom" constant="7" id="as2-OR-Bcm"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="DHH-ie-Mcb" secondAttribute="trailing" constant="134" id="qqQ-ks-h0P"/>
+                            <constraint firstItem="c7u-AJ-VI5" firstAttribute="centerY" secondItem="GP3-eo-TBK" secondAttribute="centerY" id="Zo5-UR-4Rl"/>
+                            <constraint firstItem="DHH-ie-Mcb" firstAttribute="top" secondItem="phv-SZ-gWX" secondAttribute="bottom" constant="7" id="as2-OR-Bcm">
+                                <variation key="heightClass=compact" constant="16"/>
+                            </constraint>
+                            <constraint firstItem="Ryn-eK-IJe" firstAttribute="top" secondItem="GP3-eo-TBK" secondAttribute="bottom" constant="30" id="cE6-aA-F63"/>
+                            <constraint firstItem="GP3-eo-TBK" firstAttribute="top" secondItem="DHH-ie-Mcb" secondAttribute="bottom" constant="40" id="drO-OE-YwY">
+                                <variation key="heightClass=compact" constant="16"/>
+                            </constraint>
+                            <constraint firstAttribute="trailingMargin" secondItem="DHH-ie-Mcb" secondAttribute="trailing" constant="134" id="qqQ-ks-h0P">
+                                <variation key="heightClass=compact" constant="96"/>
+                            </constraint>
                             <constraint firstItem="phv-SZ-gWX" firstAttribute="centerX" secondItem="FXQ-gV-qwE" secondAttribute="centerX" id="vYg-kk-AMc"/>
                             <constraint firstItem="phv-SZ-gWX" firstAttribute="leading" secondItem="FXQ-gV-qwE" secondAttribute="leadingMargin" constant="32" id="z77-BS-J2I"/>
                         </constraints>
@@ -134,7 +154,11 @@
                                 <exclude reference="EeY-La-xdC"/>
                                 <exclude reference="as2-OR-Bcm"/>
                                 <exclude reference="qqQ-ks-h0P"/>
-                                <exclude reference="W2h-Hn-gOs"/>
+                                <exclude reference="DIs-BH-I7T"/>
+                                <exclude reference="drO-OE-YwY"/>
+                                <exclude reference="cE6-aA-F63"/>
+                                <exclude reference="W9O-Du-zOX"/>
+                                <exclude reference="Zo5-UR-4Rl"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=compact">
@@ -145,7 +169,15 @@
                                 <include reference="EeY-La-xdC"/>
                                 <include reference="as2-OR-Bcm"/>
                                 <include reference="qqQ-ks-h0P"/>
-                                <include reference="W2h-Hn-gOs"/>
+                                <include reference="DIs-BH-I7T"/>
+                                <exclude reference="Yrp-EB-LO2"/>
+                                <include reference="drO-OE-YwY"/>
+                                <exclude reference="6bA-ZE-PEn"/>
+                                <include reference="cE6-aA-F63"/>
+                                <exclude reference="893-Im-yjM"/>
+                                <include reference="W9O-Du-zOX"/>
+                                <exclude reference="Xd5-9r-CVU"/>
+                                <include reference="Zo5-UR-4Rl"/>
                             </mask>
                         </variation>
                     </view>
@@ -157,7 +189,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IC8-h3-Kyq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1823" y="573"/>
+            <point key="canvasLocation" x="1915" y="364.5"/>
         </scene>
         <!--Gyroscope Control-->
         <scene sceneID="8K6-2c-pOo">
@@ -445,7 +477,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JDy-Jn-Q6H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1850" y="1119"/>
+            <point key="canvasLocation" x="1915" y="1231.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="jjo-l4-DgR">

@@ -26,7 +26,9 @@ class ButtonControlViewController: UIViewController {
     
     func sendInstruction(var instruction: UInt8) {
         let dataValue: NSData = NSData(bytes: &instruction, length: 1)
-        self.peripheral.writeValue(dataValue, forCharacteristic: self.characteristic, type: CBCharacteristicWriteType.WithoutResponse)
+        self.peripheral.writeValue(dataValue, forCharacteristic: self.characteristic, type: CBCharacteristicWriteType.WithResponse)
+        println("Instruction sent: \(instruction)")
+        
     }
     
     @IBAction func forward(sender: UIButton) {
