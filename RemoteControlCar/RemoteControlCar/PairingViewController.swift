@@ -26,7 +26,6 @@ class PairingViewController: UIViewController, UITableViewDelegate, UITableViewD
         super.viewDidLoad()
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: Storyboard.CellReuseIdentifier)
         manager = CBCentralManager(delegate: self, queue: nil)
-        self.manager.scanForPeripheralsWithServices(SUUID, options: [CBCentralManagerScanOptionAllowDuplicatesKey: false])
     }
     
     //================================================================
@@ -37,10 +36,13 @@ class PairingViewController: UIViewController, UITableViewDelegate, UITableViewD
         switch central.state {
         case CBCentralManagerState.PoweredOn:
             self.manager.scanForPeripheralsWithServices(SUUID, options: [CBCentralManagerScanOptionAllowDuplicatesKey: false])
+            self.statusLabel.text = "Searching..."
             println("Bluetooth is on, scanning now.")
         case CBCentralManagerState.PoweredOff:
+            self.statusLabel.text = "Turn on bluetooth."
             println("Bluetooth is turned off, please turn it on.")
         case CBCentralManagerState.Unauthorized:
+            self.statusLabel.text = "No permission."
             println("This app does not have permission to use BLE.")
         default:
             println("State has not been changed.")

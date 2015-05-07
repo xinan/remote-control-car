@@ -94,7 +94,7 @@ class GyroControlViewController: UIViewController {
     
     func sendInstruction(var instruction: UInt8) {
         let dataValue: NSData! = NSData(bytes: &instruction, length: 1)
-        self.peripheral!.writeValue(dataValue, forCharacteristic: self.characteristic!, type: CBCharacteristicWriteType.WithResponse)
+        self.peripheral!.writeValue(dataValue, forCharacteristic: self.characteristic!, type: CBCharacteristicWriteType.WithoutResponse)
         println("Instruction sent: \(instruction)")
     }
     
