@@ -106,6 +106,8 @@ class PairingViewController: UIViewController, UITableViewDelegate, UITableViewD
             println("Characteristic found: \(characteristic.UUID)")
             if characteristic.UUID == CUUID[0] {
                 self.characteristic = characteristic
+                println(characteristic)
+                println(characteristic.properties)
                 println("Everything seems ok now. Try to control the car. ")
             }
         }
