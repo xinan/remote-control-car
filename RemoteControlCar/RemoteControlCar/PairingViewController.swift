@@ -21,8 +21,10 @@ class PairingViewController: UIViewController, UITableViewDelegate, UITableViewD
     let CUUID = [CBUUID(string: "FFE1")]
     
     override func viewDidLoad() {
+        super.viewDidLoad()
+        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: Storyboard.CellReuseIdentifier)
         manager = CBCentralManager(delegate: self, queue: nil)
-        self.manager.scanForPeripheralsWithServices(nil, options: [CBCentralManagerScanOptionAllowDuplicatesKey: false])
+        self.manager.scanForPeripheralsWithServices(SUUID, options: [CBCentralManagerScanOptionAllowDuplicatesKey: false])
     }
     
     //================================================================
@@ -32,7 +34,7 @@ class PairingViewController: UIViewController, UITableViewDelegate, UITableViewD
     @objc func centralManagerDidUpdateState(central: CBCentralManager!) {
         switch central.state {
         case CBCentralManagerState.PoweredOn:
-            self.manager.scanForPeripheralsWithServices(nil, options: [CBCentralManagerScanOptionAllowDuplicatesKey: false])
+            self.manager.scanForPeripheralsWithServices(SUUID, options: [CBCentralManagerScanOptionAllowDuplicatesKey: false])
             println("Bluetooth is on, scanning now.")
         case CBCentralManagerState.PoweredOff:
             println("Bluetooth is turned off, please turn it on.")
@@ -44,7 +46,8 @@ class PairingViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func centralManager(central: CBCentralManager!, didDiscoverPeripheral peripheral: CBPeripheral!, advertisementData: [NSObject : AnyObject]!, RSSI: NSNumber!) {
-        if self.devices.containsObject(peripheral) {
+        println("Discovered peripheral: \(peripheral.name)")
+        if !self.devices.containsObject(peripheral) {
             self.devices.addObject(peripheral)
             self.tableView.reloadData()
         }
@@ -124,7 +127,7 @@ class PairingViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.CellReuseIdentifier, forIndexPath: indexPath) as! UITableViewCell
-        let device: CBPeripheral = devices.objectAtIndex(indexPath.row) as! CBPeripheral
+        var device: CBPeripheral = devices.objectAtIndex(indexPath.row) as! CBPeripheral
         cell.textLabel?.text = device.name
         cell.detailTextLabel?.text = device.identifier.UUIDString
         
@@ -132,7 +135,9 @@ class PairingViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.peripheral = devices.objectAtIndex(indexPath.row) as! CBPeripheral
+        let device = devices.objectAtIndex(indexPath.row) as! CBPeripheral
+        self.manager.connectPeripheral(device, options: nil)
+        println("Connecting to peripheral \(device.name)")
     }
     
 }
