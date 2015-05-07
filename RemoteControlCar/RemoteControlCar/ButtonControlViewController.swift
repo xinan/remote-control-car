@@ -7,27 +7,46 @@
 //
 
 import UIKit
+import CoreBluetooth
 
 class ButtonControlViewController: UIViewController {
 
+    var peripheral: CBPeripheral!
+    var characteristic: CBCharacteristic!
+    
+    override func viewDidLoad() {
+        if peripheral == nil || characteristic == nil {
+            let alertController = UIAlertController(title: "No car connected", message: "Connect to a car first.", preferredStyle: UIAlertControllerStyle.Alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { [weak self] (alertAction) -> (Void) in
+                self?.navigationController?.popViewControllerAnimated(true)
+                }))
+            self.presentViewController(alertController, animated: true, completion: nil)
+        }
+    }
+    
+    func sendInstruction(var instruction: UInt8) {
+        let dataValue: NSData = NSData(bytes: &instruction, length: 1)
+        self.peripheral.writeValue(dataValue, forCharacteristic: self.characteristic, type: CBCharacteristicWriteType.WithoutResponse)
+    }
+    
     @IBAction func forward(sender: UIButton) {
-        println("Going forward")
+        sendInstruction(0b10000100)
     }
     
     @IBAction func backward(sender: UIButton) {
-        println("Going backward")
+        sendInstruction(0b01000100)
     }
     
     @IBAction func turnLeft(sender: UIButton) {
-        println("Turning left")
+        sendInstruction(0b10100100)
     }
     
     @IBAction func turnRight(sender: UIButton) {
-        println("Turning right")
+        sendInstruction(0b10010100)
     }
     
     @IBAction func stop(sender: UIButton) {
-        println("Stopped")
+        sendInstruction(0b00000000)
     }
     
     @IBAction func specialAction(sender: UIButton) {

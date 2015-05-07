@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreMotion
+import CoreBluetooth
 
 class GyroControlViewController: UIViewController {
 
@@ -15,43 +16,53 @@ class GyroControlViewController: UIViewController {
     @IBOutlet weak var speedLabel: UILabel!
     
     let mm : CMMotionManager = CMMotionManager()
+    var peripheral: CBPeripheral!
+    var characteristic: CBCharacteristic!
 
     override func viewDidLoad() {
-        if mm.deviceMotionAvailable {
-            mm.deviceMotionUpdateInterval = 0.1
-            mm.startDeviceMotionUpdatesToQueue(NSOperationQueue.currentQueue()) {
-                [weak self] data, error in
-                let xyRotation = atan2(data.gravity.x, data.gravity.y) - M_PI
-                let xzRotation = atan2(data.gravity.x, data.gravity.z) - M_PI
-                var leftRight: UInt8 = 0b00000000
-                var backwardForward: UInt8 = 0b00000000
-                var speed: UInt8 = 0b00000000
-                if (xyRotation < -5.2) {
-                    leftRight = 0b00010000
-                } else if (xyRotation > -4.3) {
-                    leftRight = 0b00100000
-                }
-                if (xzRotation < -5.2) {
-                    backwardForward = 0b10000000
-                    speed = UInt8(Int((-5.2 - xzRotation) * 5) + 1)
-                } else if (xzRotation > -4.5) {
-                    backwardForward = 0b01000000
-                    speed = UInt8(Int((xzRotation + 4.5) * 5) + 1)
-                }
-                if (speed > 4) {
-                    speed = 4
-                }
-                self?.dispatch(leftRight, backwardForward: backwardForward, speed: speed)
-            }
+        if peripheral == nil || characteristic == nil {
+            let alertController = UIAlertController(title: "No car connected", message: "Connect to a car first.", preferredStyle: UIAlertControllerStyle.Alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { [weak self] (alertAction) -> (Void) in
+                self?.navigationController?.popViewControllerAnimated(true)
+            }))
+            self.presentViewController(alertController, animated: true, completion: nil)
         } else {
-            self.actionLabel.text = "Gyroscope not available :("
+            if mm.deviceMotionAvailable {
+                mm.deviceMotionUpdateInterval = 0.1
+                mm.startDeviceMotionUpdatesToQueue(NSOperationQueue.currentQueue()) {
+                    [weak self] data, error in
+                    let xyRotation = atan2(data.gravity.x, data.gravity.y) - M_PI
+                    let xzRotation = atan2(data.gravity.x, data.gravity.z) - M_PI
+                    var leftRight: UInt8 = 0b00000000
+                    var backwardForward: UInt8 = 0b00000000
+                    var speed: UInt8 = 0b00000000
+                    if (xyRotation < -5.2) {
+                        leftRight = 0b00010000
+                    } else if (xyRotation > -4.3) {
+                        leftRight = 0b00100000
+                    }
+                    if (xzRotation < -5.2) {
+                        backwardForward = 0b10000000
+                        speed = UInt8(Int((-5.2 - xzRotation) * 5) + 1)
+                    } else if (xzRotation > -4.5) {
+                        backwardForward = 0b01000000
+                        speed = UInt8(Int((xzRotation + 4.5) * 5) + 1)
+                    }
+                    if (speed > 4) {
+                        speed = 4
+                    }
+                    self?.dispatch(leftRight, backwardForward: backwardForward, speed: speed)
+                }
+            } else {
+                self.actionLabel.text = "Gyroscope not available :("
+            }
         }
     }
     
     func dispatch(leftRight: UInt8, backwardForward: UInt8, speed: UInt8) {
         let instruction: UInt8 = 0b00000000 | leftRight | backwardForward | speed
         
-        println(Int(instruction)) // This line will be changed to send instruction through bluetooth
+        self.sendInstruction(instruction)
         
         let action = Int(instruction >> 4)
         
@@ -79,6 +90,11 @@ class GyroControlViewController: UIViewController {
             self.actionLabel.text = "Error"
         }
         self.speedLabel.text = "\(Int(speed))"
+    }
+    
+    func sendInstruction(var instruction: UInt8) {
+        let dataValue: NSData = NSData(bytes: &instruction, length: 1)
+        self.peripheral.writeValue(dataValue, forCharacteristic: self.characteristic, type: CBCharacteristicWriteType.WithoutResponse)
     }
     
     override func viewDidDisappear(animated: Bool) {

@@ -104,7 +104,7 @@ class PairingViewController: UIViewController, UITableViewDelegate, UITableViewD
             println("Characteristic found: \(characteristic.UUID)")
             if characteristic.UUID == CUUID[0] {
                 self.characteristic = characteristic
-                println("Everything seems to be ok now. Try to control the car. ")
+                println("Everything seems ok now. Try to control the car. ")
             }
         }
     }
@@ -146,6 +146,20 @@ class PairingViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.connectedIndexPath = indexPath
         self.manager.connectPeripheral(device, options: nil)
         println("Connecting to peripheral \(device.name)")
+    }
+    
+    //================================================================
+    // Prepare for segue, pass peripheral and characteristic over.
+    //================================================================
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let gcvc = segue.destinationViewController as? GyroControlViewController {
+            gcvc.peripheral = self.peripheral
+            gcvc.characteristic = self.characteristic
+        } else if let bcvc = segue.destinationViewController as? ButtonControlViewController {
+            bcvc.peripheral = self.peripheral
+            bcvc.characteristic = self.characteristic
+        }
     }
     
 }
