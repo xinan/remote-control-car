@@ -36,7 +36,7 @@ class GyroControlViewController: UIViewController {
                     speed = UInt8(Int((-5.2 - xzRotation) * 5) + 1)
                 } else if (xzRotation > -4.5) {
                     backwardForward = 0b01000000
-                    speed = UInt8(Int((xzRotation + 4.2) * 5) + 1)
+                    speed = UInt8(Int((xzRotation + 4.5) * 5) + 1)
                 }
                 if (speed > 4) {
                     speed = 4
