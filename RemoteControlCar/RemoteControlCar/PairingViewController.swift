@@ -86,11 +86,11 @@ class PairingViewController: UIViewController, UITableViewDelegate, UITableViewD
             println("Invalid services: \(error.localizedDescription)")
             return
         }
-        for service in peripheral.services {
+        for service in peripheral.services as! [CBService] {
             println("Service found: \(service.UUID)")
-            if service.UUID.description == SUUID[0] {
+            if service.UUID == SUUID[0] {
                 println("Searching characteristic for service \(service.UUID)...")
-                peripheral.discoverCharacteristics(CUUID, forService: service as! CBService)
+                peripheral.discoverCharacteristics(CUUID, forService: service)
             }
         }
     }
@@ -100,10 +100,10 @@ class PairingViewController: UIViewController, UITableViewDelegate, UITableViewD
             println("Invalid characteristic: \(error.localizedDescription)")
             return
         }
-        for characteristic in service.characteristics {
+        for characteristic in service.characteristics as! [CBCharacteristic] {
             println("Characteristic found: \(characteristic.UUID)")
-            if characteristic.UUID.description == CUUID[0] {
-                self.characteristic = characteristic as! CBCharacteristic
+            if characteristic.UUID == CUUID[0] {
+                self.characteristic = characteristic
                 println("Everything seems to be ok now. Try to control the car. ")
             }
         }
