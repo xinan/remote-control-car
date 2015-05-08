@@ -100,7 +100,9 @@ class GyroControlViewController: UIViewController {
     
     override func viewWillDisappear(animated: Bool) {
         mm.stopDeviceMotionUpdates()
-        sendInstruction(0b00000000)
+        if self.peripheral != nil {
+            sendInstruction(0b00000000)
+        }
     }
 
 }
