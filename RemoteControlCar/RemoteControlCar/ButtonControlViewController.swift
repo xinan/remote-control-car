@@ -32,39 +32,39 @@ class ButtonControlViewController: UIViewController {
     }
     
     @IBAction func forward(sender: UIButton) {
-        sendInstruction(0b10000100)
+        sendInstruction(Instruction.FORWARD | Instruction.FULLSPEED)
     }
     
     @IBAction func backward(sender: UIButton) {
-        sendInstruction(0b01000100)
+        sendInstruction(Instruction.BACKWARD | Instruction.FULLSPEED)
     }
     
     @IBAction func turnLeft(sender: UIButton) {
-        sendInstruction(0b00100000)
+        sendInstruction(Instruction.TURNLEFT | Instruction.FULLSPEED)
     }
     
     @IBAction func turnRight(sender: UIButton) {
-        sendInstruction(0b00010000)
+        sendInstruction(Instruction.TURNRIGHT | Instruction.FULLSPEED)
     }
     
     @IBAction func rightForward(sender: UIButton) {
-        sendInstruction(0b10010100)
+        sendInstruction(Instruction.FORWARD | Instruction.TURNRIGHT | Instruction.FULLSPEED)
     }
     
     @IBAction func leftForward(sender: UIButton) {
-        sendInstruction(0b10100100)
+        sendInstruction(Instruction.FORWARD | Instruction.TURNLEFT | Instruction.FULLSPEED)
     }
     
     @IBAction func rightBackward(sender: UIButton) {
-        sendInstruction(0b01010100)
+        sendInstruction(Instruction.BACKWARD | Instruction.TURNRIGHT | Instruction.FULLSPEED)
     }
     
     @IBAction func leftBackward(sender: UIButton) {
-        sendInstruction(0b01100100)
+        sendInstruction(Instruction.BACKWARD | Instruction.TURNLEFT | Instruction.FULLSPEED)
     }
     
     @IBAction func stop(sender: UIButton) {
-        sendInstruction(0b00000000)
+        sendInstruction(Instruction.STOP)
     }
     
     @IBAction func tranform(sender: UIButton) {

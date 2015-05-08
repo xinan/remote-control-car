@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F218F8171AF7DB6500369729 /* GyroControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F218F8161AF7DB6500369729 /* GyroControlViewController.swift */; };
+		F25AFEE71AFD20E700AAB98A /* Instruction.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25AFEE61AFD20E700AAB98A /* Instruction.swift */; };
 		F269D17C1AF4B8430075CDFC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F269D17B1AF4B8430075CDFC /* AppDelegate.swift */; };
 		F269D17E1AF4B8430075CDFC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F269D17D1AF4B8430075CDFC /* ViewController.swift */; };
 		F269D1811AF4B8430075CDFC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F269D17F1AF4B8430075CDFC /* Main.storyboard */; };
@@ -30,6 +31,7 @@
 
 /* Begin PBXFileReference section */
 		F218F8161AF7DB6500369729 /* GyroControlViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GyroControlViewController.swift; sourceTree = "<group>"; };
+		F25AFEE61AFD20E700AAB98A /* Instruction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Instruction.swift; sourceTree = "<group>"; };
 		F269D1761AF4B8420075CDFC /* RemoteControlCar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RemoteControlCar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F269D17A1AF4B8430075CDFC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F269D17B1AF4B8430075CDFC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 				F218F8161AF7DB6500369729 /* GyroControlViewController.swift */,
 				F269D17D1AF4B8430075CDFC /* ViewController.swift */,
 				F269D19D1AF520310075CDFC /* ButtonControlViewController.swift */,
+				F25AFEE61AFD20E700AAB98A /* Instruction.swift */,
 				F269D17F1AF4B8430075CDFC /* Main.storyboard */,
 				F269D19B1AF51EAF0075CDFC /* PairingViewController.swift */,
 				F269D1791AF4B8430075CDFC /* Supporting Files */,
@@ -222,6 +225,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F25AFEE71AFD20E700AAB98A /* Instruction.swift in Sources */,
 				F269D19E1AF520310075CDFC /* ButtonControlViewController.swift in Sources */,
 				F269D17E1AF4B8430075CDFC /* ViewController.swift in Sources */,
 				F269D19C1AF51EAF0075CDFC /* PairingViewController.swift in Sources */,

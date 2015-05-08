@@ -33,19 +33,19 @@ class GyroControlViewController: UIViewController {
                     [weak self] data, error in
                     let xyRotation = atan2(data.gravity.x, data.gravity.y) - M_PI
                     let xzRotation = atan2(data.gravity.x, data.gravity.z) - M_PI
-                    var leftRight: UInt8 = 0b00000000
-                    var backwardForward: UInt8 = 0b00000000
-                    var speed: UInt8 = 0b00000000
+                    var leftRight: UInt8 = Instruction.STOP
+                    var backwardForward: UInt8 = Instruction.STOP
+                    var speed: UInt8 = Instruction.STOP
                     if (xyRotation < -5.2) {
-                        leftRight = 0b00010000
+                        leftRight = Instruction.TURNRIGHT
                     } else if (xyRotation > -4.3) {
-                        leftRight = 0b00100000
+                        leftRight = Instruction.TURNLEFT
                     }
                     if (xzRotation < -5.2) {
-                        backwardForward = 0b10000000
+                        backwardForward = Instruction.FORWARD
                         speed = UInt8(Int((-5.2 - xzRotation) * 5) + 1)
                     } else if (xzRotation > -4.5) {
-                        backwardForward = 0b01000000
+                        backwardForward = Instruction.BACKWARD
                         speed = UInt8(Int((xzRotation + 4.5) * 5) + 1)
                     }
                     if (speed > 4) {
@@ -60,7 +60,7 @@ class GyroControlViewController: UIViewController {
     }
     
     func dispatch(leftRight: UInt8, backwardForward: UInt8, speed: UInt8) {
-        let instruction: UInt8 = 0b00000000 | leftRight | backwardForward | speed
+        let instruction: UInt8 = leftRight | backwardForward | speed
         
         self.sendInstruction(instruction)
         
@@ -101,7 +101,7 @@ class GyroControlViewController: UIViewController {
     override func viewWillDisappear(animated: Bool) {
         mm.stopDeviceMotionUpdates()
         if self.peripheral != nil {
-            sendInstruction(0b00000000) // Send stop signal before leaving the view
+            sendInstruction(Instruction.STOP) // Send stop signal before leaving the view
         }
     }
 
