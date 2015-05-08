@@ -40,19 +40,35 @@ class ButtonControlViewController: UIViewController {
     }
     
     @IBAction func turnLeft(sender: UIButton) {
-        sendInstruction(0b10100100)
+        sendInstruction(0b00100000)
     }
     
     @IBAction func turnRight(sender: UIButton) {
+        sendInstruction(0b00010000)
+    }
+    
+    @IBAction func rightForward(sender: UIButton) {
         sendInstruction(0b10010100)
+    }
+    
+    @IBAction func leftForward(sender: UIButton) {
+        sendInstruction(0b10010100)
+    }
+    
+    @IBAction func rightBackward(sender: UIButton) {
+        sendInstruction(0b01010100)
+    }
+    
+    @IBAction func leftBackward(sender: UIButton) {
+        sendInstruction(0b01010100)
     }
     
     @IBAction func stop(sender: UIButton) {
         sendInstruction(0b00000000)
     }
     
-    @IBAction func specialAction(sender: UIButton) {
-        println("Performing special action")
+    @IBAction func tranform(sender: UIButton) {
+        println("Transforming...")
     }
 
 }
