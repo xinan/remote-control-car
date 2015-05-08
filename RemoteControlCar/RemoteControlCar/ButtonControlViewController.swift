@@ -52,7 +52,7 @@ class ButtonControlViewController: UIViewController {
     }
     
     @IBAction func leftForward(sender: UIButton) {
-        sendInstruction(0b10010100)
+        sendInstruction(0b10100100)
     }
     
     @IBAction func rightBackward(sender: UIButton) {
@@ -60,7 +60,7 @@ class ButtonControlViewController: UIViewController {
     }
     
     @IBAction func leftBackward(sender: UIButton) {
-        sendInstruction(0b01010100)
+        sendInstruction(0b01100100)
     }
     
     @IBAction func stop(sender: UIButton) {

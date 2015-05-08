@@ -98,8 +98,9 @@ class GyroControlViewController: UIViewController {
         println("Instruction sent: \(instruction)")
     }
     
-    override func viewDidDisappear(animated: Bool) {
+    override func viewWillDisappear(animated: Bool) {
         mm.stopDeviceMotionUpdates()
+        sendInstruction(0b00000000)
     }
 
 }
